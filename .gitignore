@@ -1,0 +1,32 @@
+# Java / Maven
+novis-backend/target/
+novis-backend/.mvn/
+*.class
+*.jar
+*.war
+
+# Spring Boot dev
+novis-backend/uploads/
+
+# Node / Vite
+novis-frontend/node_modules/
+novis-frontend/dist/
+novis-frontend/.vite/
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+*.swp
+
+# macOS
+.DS_Store
+
+# Env / secrets
+.env
+.env.local
+*.env
+
+# Logs
+*.log
+logs/

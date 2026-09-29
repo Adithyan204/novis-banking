@@ -1,0 +1,61 @@
+spring:
+  application:
+    name: novis-backend
+  profiles:
+    active: dev
+server:
+  port: 8080
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+jwt:
+  secret: YWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXoxMjM0NTY3ODkwYWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXoxMg==
+  access-token-expiry: 900000
+  refresh-token-expiry: 604800000
+kyc:
+  upload-dir: ./uploads/kyc
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:h2:mem:novisdb;MODE=MySQL;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+    url: jdbc:h2:mem:novisdb;MODE=MySQL;DB_CLOSE_DELAY=-1
+    user: sa
+    password:
+  h2:
+    console:
+      enabled: true
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:mysql://localhost:3306/novisdb
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  flyway:
+    enabled: true
