@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: novis-backend
+    runtime: docker
+    dockerfilePath: ./novis-backend/Dockerfile
+    dockerContext: ./novis-backend
+    plan: free
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: JWT_SECRET
+        value: bm92aXMtc3VwZXItc2VjcmV0LWtleS1mb3ItcHJvZHVjdGlvbi0yMDI0LXNlY3VyZQ==
+    healthCheckPath: /actuator/health
